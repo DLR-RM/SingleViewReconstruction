@@ -2,11 +2,11 @@
 
 ## 3D Scene Reconstruction from a Single Viewport
 
-<p align="center">
-<img src="readme.jpg" alt="data overview image" width=500>
-</p>
-
 Maximilian Denninger and Rudolph Triebel
+
+<p align="center">
+<img src="readme.jpg" alt="data overview image" width=800>
+</p>
 
 Accepted paper at ECCV 2020. [paper], [short-video], [long-video]
 
