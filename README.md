@@ -27,7 +27,7 @@ Including of course all the color and normals images.
 The data used for the training of our model was after compression around 1 TB big. 
 
 As SUNCG is not longer available, we can not upload the data, we used for training as it falls under the the SUNCG blocking.
-If you do not have access to the SUNCG dataset, you can try use the 3D-Front dataset and change the necessary code parts.
+If you do not have access to the SUNCG dataset, you can try using the [3D-Front](https://tianchi.aliyun.com/specials/promotion/alibaba-3d-scene-dataset) dataset and change the code to match this new dataset.
 
 ### Data generation
 

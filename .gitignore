@@ -3,4 +3,5 @@
 *cmake-build-release/
 *cmake*
 *__pycache__*
+*.pyc
 data/
