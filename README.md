@@ -4,10 +4,6 @@
 
 Maximilian Denninger and Rudolph Triebel
 
-<p align="center">
-<img src="readme.jpg" alt="data overview image" width=800>
-</p>
-
 Accepted paper at ECCV 2020. [paper], [short-video], [long-video]
 
 ## Citation
@@ -19,6 +15,10 @@ bibkey
 ```
 
 ## Overview
+
+<p align="center">
+<img src="readme.jpg" alt="data overview image" width=800>
+</p>
 
 This repository contains everything necessary to completely reproduce the results presented in our paper. 
 This includes the generation of the data and the training of our model.
