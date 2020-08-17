@@ -1,0 +1,14 @@
+image:
+  size: 512
+
+validation_ratio: 0.05
+batch_size: 8
+max_dataset_size: 335000
+shuffle_size: 200 # < 0 no shuffling
+augment : "True"
+learning_rate: 0.0001
+
+data:
+  path: "data/"
+
+

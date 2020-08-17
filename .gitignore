@@ -1,5 +1,13 @@
 *.idea/
 *cmake-build-debug/
 *cmake-build-release/
-*cmake-*
+*cmake*
+*__pycache__*
+*.pyc
+*.tfrecord
 data/
+UNetNormalGen/logs
+UNetNormalGen/model
+SingleViewReconstruction/model
+SingleViewReconstruction/logs
+
