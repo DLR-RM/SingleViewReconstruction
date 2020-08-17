@@ -5,8 +5,8 @@ So you can only progress here, if you already have a downloaded version of SUNCG
 Be aware that, we are not at liberty to release the assets ourselves.
 
 Assuming you have this, we use the SUNCG Toolbox: [https://github.com/tinytangent/SUNCGtoolbox](https://github.com/tinytangent/SUNCGtoolbox)
- 
-After download and setting it up, follow their instructions on how to do this.
+
+So, please follow their instructions on how to download and build it.
 
 Afterwards, you can convert some house.json files, which you can find in the house folder. 
 Where each hash id in this folder is a certain house.
