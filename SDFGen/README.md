@@ -56,6 +56,9 @@ Again, we provide here also a script to do this automatically for the generated 
 Please, change the paths in [generate_tsdf_volumes.py](generate_tsdf_volumes.py), so that it will convert all generate `house.obj` and `camera positions` into TSDF voxelgrids.
 
 
+## View data
+
+To view these voxelgrids one can use the [TSDFRenderer](../TSDFRenderer).
 
 
 

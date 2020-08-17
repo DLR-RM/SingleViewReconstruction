@@ -1,0 +1,97 @@
+{
+  "config": {
+    "data": {
+      "val_hard_samples_path": "",
+      "truncation_threshold": 0.1,
+      "data_augmentation": true,
+      "train_hard_samples_path": "",
+      "focused_blocks": 1,
+      "eval_batch_size": 64,
+      "batch_size": 256,
+      "additional_border": 7,
+      "additional_blocks": 0,
+      "train_path": "/home/max/workspace/SingleViewReconstruction/data/*/voxelgrid",
+      "val_path": "/home/max/workspace/SingleViewReconstruction/data/107*",
+      "model_save_path": "/home/max/workspace/SingleViewReconstruction/data/ae_model",
+      "block_size": 16,
+      "data_size": 512
+    },
+    "model": {
+      "decoder": {
+        "output": {
+          "padding": "same",
+          "kernel_size": 3
+        },
+        "conv": {
+          "default": {
+            "learned_pool_upsampling": true,
+            "upsampling_enabled": true,
+            "activation": "relu",
+            "padding": "same",
+            "pooling_enabled": false,
+            "batch_normalization": false,
+            "kernel_size": 3
+          },
+          "1": {
+            "channels": 64
+          },
+          "0": {
+            "channels": 128
+          },
+          "3": {
+            "channels": 16
+          },
+          "2": {
+            "channels": 32
+          },
+          "4": {
+            "channels": 64,
+            "upsampling_enabled": false
+          },
+          "total": 5
+        }
+      },
+      "encoder": {
+        "conv": {
+          "default": {
+            "learned_pool_upsampling": true,
+            "activation": "relu",
+            "padding": "same",
+            "pooling_enabled": true,
+            "batch_normalization": false,
+            "kernel_size": 3
+          },
+          "1": {
+            "channels": 32,
+            "padding": "valid"
+          },
+          "0": {
+            "channels": 16,
+            "padding": "valid"
+          },
+          "3": {
+            "channels": 128
+          },
+          "2": {
+            "channels": 64,
+            "padding": "valid"
+          },
+          "4": {
+            "channels": 64,
+            "activation": "linear",
+            "pooling_enabled": false
+          },
+          "total": 5
+        }
+      }
+    },
+    "optimizer": {
+      "loss": "weighted_L1",
+      "lr": 0.0003,
+      "batch_topk_loss": 0,
+      "topk_loss": 0
+    },
+    "checkpoint_interval": 0,
+    "save_interval": 100
+  }
+}

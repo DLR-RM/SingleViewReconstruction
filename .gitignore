@@ -2,4 +2,5 @@
 *cmake-build-debug/
 *cmake-build-release/
 *cmake*
+*__pycache__*
 data/
