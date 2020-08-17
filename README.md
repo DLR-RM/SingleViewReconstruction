@@ -3,7 +3,7 @@
 ## 3D Scene Reconstruction from a Single Viewport
 
 <p align="center">
-<img src="readme.png" alt="data overview image" width=500>
+<img src="readme.jpg" alt="data overview image" width=500>
 </p>
 
 Maximilian Denninger and Rudolph Triebel
