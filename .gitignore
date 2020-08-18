@@ -4,4 +4,7 @@
 *cmake*
 *__pycache__*
 *.pyc
+*.tfrecord
 data/
+UNetNormalGen/logs
+UNetNormalGen/model
