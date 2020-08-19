@@ -12,9 +12,20 @@ Accepted paper at ECCV 2020. [paper](https://www.ecva.net/papers/eccv_2020/paper
 <img src="readme.gif" alt="data overview image" width=800>
 </p>
 
-This repository contains everything necessary to completely reproduce the results presented in our paper. 
+#### Abstract
+
+We present a novel approach to infer volumetric reconstructions from a single viewport, based only on a RGB image and a reconstructed normal image. 
+To overcome the problem of reconstructing regions in 3D that are occluded in the 2D image, we propose to learn this information from synthetically generated high-resolution data. 
+To do this, we introduce a deep network architecture that is specifically designed for volumetric TSDF data by featuring a specific tree net architecture. 
+Our framework can handle a 3D resolution of 512³ by introducing a dedicated compression technique based on a modified autoencoder. 
+Furthermore, we introduce a novel loss shaping technique for 3D data that guides the learning process towards regions where free and occupied space are close to each other. 
+As we show in experiments on synthetic and realistic benchmark data, this leads to very good reconstruction results, both visually and in terms of quantitative measures.
+
+#### Content description description
+
+This repository contains everything necessary to reproduce the results presented in our paper. 
 This includes the generation of the data and the training of our model.
-Be aware, that the generation of the data is time consuming as each process is optimized to maximum but still billions of truncated signed distance values and weights have to be calculated.
+Be aware, that the generation of the data is time consuming as each process is optimized to the maximum but still billions of truncated signed distance values and weights have to be calculated.
 Including of course all the color and normals images. 
 The data used for the training of our model was after compression around 1 TB big. 
 
@@ -50,4 +61,11 @@ This is a quick overview over the data generation process, it is all based on th
 
 These are then combined with this [script](SingleViewReconstruction/generate_tf_records.py) to several tf records, which are then used to [train](SingleViewReconstruction/train.py) our SingleViewReconstruction network.
 
+### Download of the trained models
+
+We will provide a script to easily download all models trained in this approach:
+
+1. The [SingleViewReconstruction](SingleViewReconstruction) model
+2. The Autoencoder Compression Model [CompressionAutoEncoder](CompressionAutoEncoder)
+3. The Normal Generation Model [UNetNormalGen](UNetNormalGen)
 
