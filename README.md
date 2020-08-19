@@ -48,6 +48,6 @@ This is a quick overview over the data generation process, it is all based on th
 4. They are used to first the train an autoencoder and then compress the 512³ voxelgrids down to a size of 32³x64, which we call encoded. See [CompressionAutoEncoder](CompressionAutoEncoder).
 5. Now only the color & normal images are missing, for that we use [BlenderProc](https://github.com/DLR-RM/BlenderProc) with the config file defined in [here](BlenderProc).
 
-These are then combined with this [script](SingleViewReconstruction/generate_tf_records.py) to several tf records, which are then used to train our SingleViewReconstruction network.
+These are then combined with this [script](SingleViewReconstruction/generate_tf_records.py) to several tf records, which are then used to [train](SingleViewReconstruction/train.py) our SingleViewReconstruction network.
 
 
