@@ -8,3 +8,6 @@
 data/
 UNetNormalGen/logs
 UNetNormalGen/model
+SingleViewReconstruction/model
+SingleViewReconstruction/logs
+

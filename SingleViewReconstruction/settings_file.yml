@@ -1,0 +1,60 @@
+
+image:
+  size: 512
+
+result:
+  size: 32
+  amount_of_output_channels: 64
+
+batch_size: 8
+max_train_dataset_size: 0 # < 0 use all train data
+shuffle_size: 350 # < 0 no shuffling
+
+type:
+  start: float_32
+  end: float_32
+
+learning_rate: 0.0001
+regularizer_scale: 0.0
+bootstrap_ratio: 0.0
+
+TestDataSet:
+  size: 500
+
+tree:
+  height: 4
+  pool_levels: ""
+  input_structure: "32, -1, 64, -1, 128, -1, 128, -1"  # -1 = means pooling
+  filters_for_level: "0, 64, 64, 64"
+  filters_in_deepest_node: 64
+  residual_levels: "3, 3, 2, 2"
+  use_reflective_padding_3D: "True"
+  amount_of_filters_in_first_3D: 64  # the amount of 3D filters resulting from the tree structure
+  inner_tree_loss_weight: 0.4        # weight main_loss + inner_tree_loss * THIS_VALUE
+  loss_height_weight: "0.2, 0.3, 0.5, 0.8" # for each layer starting from the highest, to the second to lowest, the math is: loss += current_loss * weight
+
+3d_layers:
+  before_3D_loss_weight: 0.4  # weight main_loss + before_3D_loss * THIS_VALUE
+  dil_values: "1, 2, 4, 8"
+  filter_amounts: "32, 16, 8, 8"  # "64, 32, 16, 16"
+  structure: "1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1"  # 0 = means reduced layer (only a slice is used, each 0 layer contains out of 3 layers), 1 = means normal layer
+  dil_values_for_separable: "1, 2, 4, 6"
+  filter_amount_for_separable: "32, 16, 8, 8"  #"64, 32, 16, 16"
+  use_plane_for_separable: "True" # use plane: if false, just one dimension is used
+
+augmentations:
+  use_them: "True"
+  amount_of_threads_used: 12
+  brightness_delta: 0.1
+  contrast_lower: 0.5
+  contrast_upper: 1.5
+  hue_delta: 0.12
+  saturation_lower: 0.44
+  saturation_upper: 1.6
+  use_loss_map: "True"
+
+log_dir: 'logs/current_test_${time_str}'
+
+data:
+  file_name: "train*.tfrecord"
+  folder_path: "data"
