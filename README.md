@@ -6,14 +6,6 @@ Maximilian Denninger and Rudolph Triebel
 
 Accepted paper at ECCV 2020. [paper], [short-video], [long-video]
 
-## Citation
-
-If you find our work useful, please cite us with: 
-
-```
-bibkey
-```
-
 ## Overview
 
 <p align="center">
@@ -28,6 +20,19 @@ The data used for the training of our model was after compression around 1 TB bi
 
 As SUNCG is not longer available, we can not upload the data, we used for training as it falls under the the SUNCG blocking.
 If you do not have access to the SUNCG dataset, you can try using the [3D-Front](https://tianchi.aliyun.com/specials/promotion/alibaba-3d-scene-dataset) dataset and change the code to match this new dataset.
+
+## Citation
+
+If you find our work useful, please cite us with: 
+
+```
+@inproceedings{denninger2020,
+  title={3D Scene Reconstruction from a Single Viewport},
+  author={Denninger, Maximilian and Triebel, Rudolph},
+  booktitle={Proceedings of the European Conference on Computer Vision (ECCV)},
+  year={2020}
+}
+```
 
 ### Data generation
 
