@@ -59,7 +59,7 @@ try:
                     del f["encoded_voxelgrid"]
                     f["encoded_voxelgrid"] = voxelgrid
             else:
-                f.create_dataset("encoded_voxelgrid", data=voxelgrid)
+                f.create_dataset("encoded_voxelgrid", data=voxelgrid, compression="grip")
 except tf.errors.OutOfRangeError:
     pass
 

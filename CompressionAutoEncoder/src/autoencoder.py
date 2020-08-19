@@ -460,7 +460,7 @@ class Autoencoder:
 
         output = batch_container
 
-        for i, splits in enumerate([self.dataset.data_size / self.dataset.output_size(), self.dataset.data_size / self.dataset.output_size(), self.dataset.data_size / self.dataset.output_size()]):
+        for i, splits in enumerate([self.dataset.data_size // self.dataset.output_size(), self.dataset.data_size // self.dataset.output_size(), self.dataset.data_size // self.dataset.output_size()]):
             output = np.concatenate(np.split(output, splits, 0), i + 1)
 
         # Cut away the additional border which is normally "eaten up" by the valid conv layers in the decoder.
@@ -487,7 +487,9 @@ class Autoencoder:
         batch_container[indices == 0] = output
 
         output = batch_container
-        for i, splits in enumerate([self.dataset.data_size / self.dataset.output_size(), self.dataset.data_size / self.dataset.output_size(), self.dataset.data_size / self.dataset.output_size()]):
+        for i, splits in enumerate([self.dataset.data_size // self.dataset.output_size(),
+                                    self.dataset.data_size // self.dataset.output_size(),
+                                    self.dataset.data_size // self.dataset.output_size()]):
             output = np.concatenate(np.split(output, splits, 0), i + 1)
 
         return output, path

@@ -9,6 +9,8 @@ import argparse
 
 parser = argparse.ArgumentParser("Visualizing of a TSDF grid stored in a .hdf5 container.")
 parser.add_argument("path", help="Path to the .hdf5 file.")
+parser.add_argument("--voxel_key", help="The key used in the .hdf5 container for the voxelgrid.", default="voxelgrid")
+parser.add_argument("--image_key", help="The key used in the .hdf5 container for the color image.", default="colors")
 args = parser.parse_args()
 
 file_path = args.path
@@ -18,14 +20,14 @@ if os.path.exists(file_path):
     wm.init()
 
     with h5py.File(file_path, "r") as file:
-        if "voxelgrid" not in file:
-            raise Exception("The file must contain a \"voxelgrid\"!")
-        voxel = np.array(file["voxelgrid"])
+        if args.voxel_key not in file:
+            raise Exception("The file must contain a \"{}\"!".format(args.voxel_key))
+        voxel = np.array(file[args.voxel_key])
         if voxel.dtype == np.uint16:
             voxel = voxel.astype(np.double) / np.iinfo(np.uint16).max * 0.1 * 2 - 0.1
         image = None
-        if "colors" in file:
-            image = np.array(file["colors"]).astype(np.uint8)
+        if args.image_key in file:
+            image = np.array(file[args.image_key]).astype(np.uint8)
         else:
             img_path = file_path.replace("voxelgrid", "blenderproc").replace("output_", "")
             if os.path.exists(img_path):

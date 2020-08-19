@@ -143,6 +143,7 @@ class Dataset:
         """
         # Read in filenames
         path = path.decode('UTF-8')
+        path = path.replace("@", "*")
         paths = glob.glob(os.path.join(path, "*.hdf5") if not path.endswith('.hdf5') else path)
         paths = [path for path in paths if "_loss_avg.hdf5" not in path]
         if not paths:
@@ -150,7 +151,7 @@ class Dataset:
         if shuffle:
             random.shuffle(paths)
         else:
-            print("Sort the data!")
+            print("Sort the {} paths!".format(len(paths)))
             paths.sort()
 
         for sample_path in paths:
@@ -192,6 +193,7 @@ class Dataset:
         return paths
 
     def npy_reader(self, path, shuffle, is_inference):
+        path = path.decode('UTF-8')
         paths = self.npy_path_prepare(path, shuffle)
         # Read in filenames
         for sample_path in paths:
@@ -320,9 +322,13 @@ class Dataset:
 
     def _build_data_reader(self, path, shuffle, input_is_latent, num_threads, is_inference):
         input_size = ([self.data_size] * 3 + [1],)
-        latent_size = ([self.data_size / self.block_size] * 3 + [self.latent_channel_size],)
+        latent_size = ([self.data_size // self.block_size] * 3 + [self.latent_channel_size],)
         output_shape = latent_size if input_is_latent else input_size
-        dataset = tf.data.Dataset.from_generator(self.h5py_reader, (tf.float32, tf.string) if is_inference else (tf.float32,), args=(path, shuffle, input_is_latent, is_inference), output_shapes=(output_shape[0], []) if is_inference else output_shape)
+        if path.endswith('.npy'):
+            dataset = tf.data.Dataset.from_generator(self.npy_reader, (tf.float32, tf.string) if is_inference else (tf.float32,), args=(path, shuffle, is_inference), output_shapes=(output_shape[0], []) if is_inference else output_shape)
+        else:
+            dataset = tf.data.Dataset.from_generator(self.h5py_reader, (tf.float32, tf.string) if is_inference else (tf.float32,), args=(path, shuffle, input_is_latent, is_inference), output_shapes=(output_shape[0], []) if is_inference else output_shape)
+
         dataset = dataset.map(lambda x, y=None: self._pad(x, y, input_is_latent=input_is_latent), num_parallel_calls=num_threads)
 
         if not input_is_latent:

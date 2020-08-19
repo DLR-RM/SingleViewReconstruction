@@ -25,6 +25,7 @@ else:
 if len(image_paths) == 0:
     raise Exception("No .hdf5 files where found here: {}".format(args.path))
 
+
 settings_file_path = os.path.join(os.path.dirname(__file__), "settings", "settings_file.yml")
 settings = SettingsReader(settings_file_path)
 
@@ -58,13 +59,14 @@ with tf.Session(config=config) as sess:
                 with h5py.File(image_path, "a") as file:
                     normal_gen = sess.run(last_layer, feed_dict={input_ph: color_img})
                     if args.use_pretrained:
-                        normal_gen = (np.power((normal_gen + 1) / 2.0, 1.0/2.2) - 0.5) * 2.0
+                        # pretrained data was in sRGB format, must be corrected here:
+                        normal_gen = np.power((normal_gen + 1) / 2.0, 1.0/2.2)
                     if "normal_gen" in file:
                         del file["normal_gen"]
                     file.create_dataset("normal_gen", data=normal_gen[0], compression="gzip")
             print("Done with image path: {}".format(image_path))
 
-
+print("Done with converting image paths!")
 
 
 
