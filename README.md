@@ -17,7 +17,7 @@ bibkey
 ## Overview
 
 <p align="center">
-<img src="readme.jpg" alt="data overview image" width=800>
+<img src="readme.gif" alt="data overview image" width=800>
 </p>
 
 This repository contains everything necessary to completely reproduce the results presented in our paper. 
