@@ -21,7 +21,7 @@ Our framework can handle a 3D resolution of 512³ by introducing a dedicated com
 Furthermore, we introduce a novel loss shaping technique for 3D data that guides the learning process towards regions where free and occupied space are close to each other. 
 As we show in experiments on synthetic and realistic benchmark data, this leads to very good reconstruction results, both visually and in terms of quantitative measures.
 
-#### Content description description
+#### Content description 
 
 This repository contains everything necessary to reproduce the results presented in our paper. 
 This includes the generation of the data and the training of our model.
