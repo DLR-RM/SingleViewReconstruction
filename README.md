@@ -44,6 +44,21 @@ If you find our work useful, please cite us with:
   year={2020}
 }
 ```
+### Environment
+
+Before you execute any of the modules in this project, please install the conda environment:
+
+```shell script
+conda env create -f environment.yml
+``` 
+
+This will create the `SingleViewReconstruction` environment, you can use it by:
+
+```shell script
+conda activate SingleViewReconstruction
+```
+
+This uses `Tensorflow 1.15` with `python 3.7`. This also includes some OpenGL packages for the visualizer.
 
 ### Data generation
 
@@ -63,9 +78,13 @@ These are then combined with this [script](SingleViewReconstruction/generate_tf_
 
 ### Download of the trained models
 
-We will provide a script to easily download all models trained in this approach:
+We provide a [script](download_models.py) to easily download all models trained in this approach:
 
 1. The [SingleViewReconstruction](SingleViewReconstruction) model
 2. The Autoencoder Compression Model [CompressionAutoEncoder](CompressionAutoEncoder)
 3. The Normal Generation Model [UNetNormalGen](UNetNormalGen)
+
+```shell script
+python download_models.py
+```
 
