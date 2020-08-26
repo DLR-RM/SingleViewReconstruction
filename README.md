@@ -4,7 +4,7 @@
 
 Maximilian Denninger and Rudolph Triebel
 
-Accepted paper at ECCV 2020. [paper](https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123670052.pdf), [short-video], [long-video]
+Accepted paper at ECCV 2020. [paper](https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123670052.pdf), [short-video](https://www.youtube.com/watch?v=wL6aPEb0Gsc), [long-video](https://www.youtube.com/watch?v=K_gumDKzvz0)
 
 ## Overview
 
