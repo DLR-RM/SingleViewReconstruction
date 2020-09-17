@@ -34,7 +34,7 @@ python encode.py ../data/510bb6a0e4dbe783109adc01b05d8c32/voxelgrid --batch_size
 This will load the model stored at `../data/ae_model` and use it to compress the voxelgrids contained in all .hdf5 files of all subdirectories in the given path. 
 The result will be stored in the same .hdf5 file at the key `encoded_voxelgrid`.
 
-The model used here, is stored in `../data/ae_model/decoder.h5` and `../data/ae_model/encoder.h5`, our pretrained models can be downloaded here: [TODO].
+The model used here, is stored in `../data/ae_model/decoder.h5` and `../data/ae_model/encoder.h5`, our pretrained models can be downloaded with this [script](../download_models.py).
 If you want to change this path, check the config.json.
 
 Use the biggest batch size possible depending on your GPU memory size (We used 2048 for 12 GB RAM). 

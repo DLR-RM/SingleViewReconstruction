@@ -24,7 +24,7 @@ With the [train.py](train.py) script, it trains a new model and stores the resul
 
 For the prediction, you need a pretrained model, you can either train one yourself or use our pretrained model.
 
-First download the model from here: [TODO](TODO) and move the unzipped files in a new folder in `UNetNormalGen/model`.
+First download the model with this [script](../download_models.py) and move the unzipped files in a new folder in `UNetNormalGen/model`.
 
 Now run the prediction pipeline:
 
