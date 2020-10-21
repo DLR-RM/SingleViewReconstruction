@@ -6,6 +6,8 @@ Maximilian Denninger and Rudolph Triebel
 
 Accepted paper at ECCV 2020. [paper](https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123670052.pdf), [short-video](https://www.youtube.com/watch?v=wL6aPEb0Gsc), [long-video](https://www.youtube.com/watch?v=K_gumDKzvz0)
 
+The author (Maximilian Denninger) gave a talk about the paper, which can be found [here](https://www.youtube.com/watch?v=cGGm3Vjdp8s).
+
 ## Overview
 
 <p align="center">
