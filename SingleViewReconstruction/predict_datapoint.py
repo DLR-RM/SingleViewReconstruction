@@ -84,7 +84,7 @@ def predict_some_sample_points(image_paths, model_path, folder_path_to_save_to, 
 
     folder_path_to_save_to = os.path.abspath(folder_path_to_save_to)
 
-    data_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), "data"))
+    data_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data"))
     settings_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "settings_file.yml"))
     if os.path.exists(settings_file_path):
         settings = SettingsReader(settings_file_path, data_folder)
@@ -190,7 +190,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    hdf5_paths = glob.glob(args.path)
+    hdf5_paths = glob.glob(args.path.replace("@", "*"))
 
     if not os.path.exists(args.output):
         os.makedirs(args.output)
