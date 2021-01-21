@@ -45,6 +45,7 @@ void ObjReader::read(const std::string& filePath){
 				m_polygons.emplace_back(pointIds, m_points);
 				m_box.addPolygon(m_polygons.back());
 				if(amountOfWhiteSpaces == 3){
+				    // flip point order to better calculate what is in and what is out
 					iPoint newPoint;
 					ss >> newPoint;
 					newPoint[1] = newPoint[0];
