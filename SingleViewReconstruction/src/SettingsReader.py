@@ -82,8 +82,9 @@ class SettingsReader(object):
         self.data_file_name = data['file_name']
         self.data_file_paths = glob.glob(os.path.join(self.folder_path, self.data_file_name))
         if not self.data_file_paths:
-            raise Exception("No paths were found, please generate data before using this script, check this path: {}".format(self.folder_path))
-        self.data_file_paths.sort()
+            print("Warning: No data files have been found, the training will not work in this mode")
+        else:
+            self.data_file_paths.sort()
 
         self.LOG_DIR = settings['log_dir']
         if '${time_str}' in self.LOG_DIR:
