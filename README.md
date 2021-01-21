@@ -62,6 +62,27 @@ conda activate SingleViewReconstruction
 
 This uses `Tensorflow 1.15` with `python 3.7`. This also includes some OpenGL packages for the visualizer.
 
+### Quick and easy complete run of the pipeline
+
+There is a script, which provides a full run of the BlenderProc pipeline, you will need the `"SingleViewReconstruction"` environment.
+
+But, be aware before you executed this script. That it will execute a lot of code and download a lot of stuff to your PC.
+
+This program will download `BlenderProc` and then afterwards `blender`. It will also download the `SceneNet` dataset and the corresponding texture lib used by `SceneNet`.
+It will render some color & normal images for the pipeline and will also generate a true output voxelgrid to compare the results to best possible.
+
+Before running, this make sure that you adapt the `SDFGen/CMakeLists.txt` file. See this [README.md](SDFGen/README.md).
+
+```shell script
+python run_on_example_scenes_from_scenenet.py
+```
+
+This will take a while and afterwards you can look at the generated scene with: 
+
+```shell script
+python TSDFRenderer/visualize_tsdf.py BlenderProc/output_dir/output_0.hdf5
+```
+
 ### Data generation
 
 This is a quick overview over the data generation process, it is all based on the SUNCG house files.

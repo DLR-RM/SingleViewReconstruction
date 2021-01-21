@@ -7,6 +7,8 @@
 *.tfrecord
 data/
 UNetNormalGen/logs
+BlenderProc/BlenderProc
+BlenderProc/output_dir
 UNetNormalGen/model
 SingleViewReconstruction/model
 SingleViewReconstruction/logs
