@@ -127,7 +127,6 @@ def generate_ground_truth(image_output_folder, used_object_file):
 
     # generate the TSDF volumes by using the camera pose and the object
     if os.path.exists(camera_pose_file) and os.path.exists(used_object_file):
-        print("Generate the TSDF volumes, this might take a while.")
         sdfgen = os.path.join(main_folder, "SDFGen", "cmake", "sdfgen")
         if not os.path.exists(sdfgen):
             print("This will now build the SDFGen project. If you haven't change the CMakeLists.txt, this will fail!")
@@ -139,6 +138,7 @@ def generate_ground_truth(image_output_folder, used_object_file):
             subprocess.call([cmd], shell=True, cwd=os.path.join(main_folder, "SDFGen"))
             if not os.path.exists(sdfgen):
                 raise Exception("The building of the sdfgen failed")
+        print("Generate the TSDF volumes, this might take a while.")
         if not os.path.exists(true_voxel_dir):
             os.makedirs(true_voxel_dir)
         cmd = "{} -o {} -c {} -r 512 -f {} --threads {} > /dev/null".format(sdfgen, used_object_file, camera_pose_file,
@@ -146,13 +146,25 @@ def generate_ground_truth(image_output_folder, used_object_file):
         subprocess.call([cmd], shell=True, cwd=os.path.join(main_folder, "SDFGen"))
 
 
-def download_models():
+def download_models(main_folder):
+    """
+    This downloads all models used in this project.
+    :param main_folder: The folder in which this file is located
+    :return unet_folder: returns the path to the UNetNormalGen dir
+    """
     # check if the models are already there, if not download them
     unet_folder = os.path.abspath(os.path.join(main_folder, "UNetNormalGen"))
     model_folder = os.path.join(unet_folder, "model")
     if not os.path.exists(model_folder):
         print("Download all models, by running the 'download_models.py'")
         download_all_models()
+    return unet_folder
+
+def generate_normals_with_unet(unet_folder, generate_normals):
+    """
+    Generate the normals with the UnetNormalGen network.
+    :param generate_normals: if this is true the normals are generated
+    """
     # if this is done with generated normals, the UNet is used to generate them
     if generate_normals:
         cmd = "python generate_predicted_normals.py --model_path model/model.ckpt " \
@@ -209,7 +221,8 @@ if __name__ == "__main__":
     if should_generate_ground_truth:
         generate_ground_truth(image_output_folder, used_object_file)
 
-    download_models()
+    unet_folder = download_models(main_folder)
+    generate_normals_with_unet(unet_folder, generate_normals)
 
     # Finally predict for each of the four images a 3D scene and save it
     cmd = "python predict_datapoint.py ../BlenderProc/output_dir/images/@.hdf5 --output ../BlenderProc/output_dir/ " \
