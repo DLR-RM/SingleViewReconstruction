@@ -59,8 +59,11 @@ def download_SceneNet(blender_proc_git_path):
     if not os.path.exists(scenenet_texture_folder):
         print("Download the scenenet textures")
         url_for_texture_zip = "https://drive.google.com/uc?id=0B_CLZMBI0zcuQ3ZMVnp1RUkyOFk"
-        output = os.path.join(scenenet_data_folder, "..", "texture_folder.tgz")
-        gdown.download(url_for_texture_zip, output, quiet=False)
+        print("###########################")
+        print("You have to download the scenenet texture yourself: {}".format(url_for_texture_zip))
+        print("The reason being that the owner changed the access permissions, we are sorry about that.")
+        print("###########################")
+        output = input("Path to the downloaded texture_library.tgz: ")
         cmd = "tar zxvf {} > /dev/null".format(output)
         subprocess.call([cmd], shell=True, cwd=os.path.join(scenenet_data_folder, ".."))
         os.remove(output)
