@@ -29,8 +29,8 @@ dataset.batch_size = args.batch_size
 
 model = Autoencoder(config_obj, dataset)
 model.set_iterators(eval_from_placeholder=True)
-
-model.load(config_obj.data.get_string("model_save_path"))
+model_save_path = os.path.join(os.path.dirname(__file__), "..", "data", "ae_model")
+model.load(model_save_path)
 
 input_ones = np.ones([1, dataset.input_size(), dataset.input_size(), dataset.input_size(), 1])
 full_block_latent = model.encode_from_placeholder(input_ones * -dataset.truncation_threshold)
@@ -40,7 +40,7 @@ data_iterator = dataset.load_custom_data(args.data_path, fast_inference=True, in
                                          full_block_latent=full_block_latent, empty_block_latent=empty_block_latent,
                                          empty_block_detection_threshold=args.empty_block_detection_threshold)
 model.set_iterators(eval_from_latent_iterator=data_iterator)
-model.load(config_obj.data.get_string("model_save_path"))
+model.load(model_save_path)
 
 batch_container = np.zeros([dataset.number_of_blocks_per_voxelgrid(), dataset.block_size, dataset.block_size, dataset.block_size, 1])
 
